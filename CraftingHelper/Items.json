@@ -1,0 +1,1520 @@
+[
+  {
+    "Name": "acacia_planks"
+  },
+  {
+    "Name": "acacia_boat"
+  },
+  {
+    "Name": "acacia_button"
+  },
+  {
+    "Name": "acacia_door"
+  },
+  {
+    "Name": "stick"
+  },
+  {
+    "Name": "acacia_fence"
+  },
+  {
+    "Name": "acacia_fence_gate"
+  },
+  {
+    "Name": "acacia_pressure_plate"
+  },
+  {
+    "Name": "acacia_slab"
+  },
+  {
+    "Name": "acacia_stairs"
+  },
+  {
+    "Name": "acacia_trapdoor"
+  },
+  {
+    "Name": "acacia_log"
+  },
+  {
+    "Name": "acacia_wood"
+  },
+  {
+    "Name": "redstone_torch"
+  },
+  {
+    "Name": "iron_ingot"
+  },
+  {
+    "Name": "activator_rail"
+  },
+  {
+    "Name": "diorite"
+  },
+  {
+    "Name": "cobblestone"
+  },
+  {
+    "Name": "andesite"
+  },
+  {
+    "Name": "iron_block"
+  },
+  {
+    "Name": "anvil"
+  },
+  {
+    "Name": "stone_slab"
+  },
+  {
+    "Name": "armor_stand"
+  },
+  {
+    "Name": "flint"
+  },
+  {
+    "Name": "feather"
+  },
+  {
+    "Name": "arrow"
+  },
+  {
+    "Name": "nether_star"
+  },
+  {
+    "Name": "glass"
+  },
+  {
+    "Name": "obsidian"
+  },
+  {
+    "Name": "beacon"
+  },
+  {
+    "Name": "bowl"
+  },
+  {
+    "Name": "beetroot"
+  },
+  {
+    "Name": "beetroot_soup"
+  },
+  {
+    "Name": "birch_planks"
+  },
+  {
+    "Name": "birch_boat"
+  },
+  {
+    "Name": "birch_button"
+  },
+  {
+    "Name": "birch_door"
+  },
+  {
+    "Name": "birch_fence"
+  },
+  {
+    "Name": "birch_fence_gate"
+  },
+  {
+    "Name": "birch_pressure_plate"
+  },
+  {
+    "Name": "birch_slab"
+  },
+  {
+    "Name": "birch_stairs"
+  },
+  {
+    "Name": "birch_trapdoor"
+  },
+  {
+    "Name": "birch_log"
+  },
+  {
+    "Name": "birch_wood"
+  },
+  {
+    "Name": "black_wool"
+  },
+  {
+    "Name": "black_banner"
+  },
+  {
+    "Name": "planks"
+  },
+  {
+    "Name": "black_bed"
+  },
+  {
+    "Name": "white_bed"
+  },
+  {
+    "Name": "ink_sac"
+  },
+  {
+    "Name": "black_carpet"
+  },
+  {
+    "Name": "sand"
+  },
+  {
+    "Name": "gravel"
+  },
+  {
+    "Name": "black_concrete_powder"
+  },
+  {
+    "Name": "black_stained_glass"
+  },
+  {
+    "Name": "black_stained_glass_pane"
+  },
+  {
+    "Name": "terracotta"
+  },
+  {
+    "Name": "black_terracotta"
+  },
+  {
+    "Name": "white_wool"
+  },
+  {
+    "Name": "blaze_rod"
+  },
+  {
+    "Name": "blaze_powder"
+  },
+  {
+    "Name": "blue_wool"
+  },
+  {
+    "Name": "blue_banner"
+  },
+  {
+    "Name": "blue_bed"
+  },
+  {
+    "Name": "lapis_lazuli"
+  },
+  {
+    "Name": "blue_carpet"
+  },
+  {
+    "Name": "blue_concrete_powder"
+  },
+  {
+    "Name": "packed_ice"
+  },
+  {
+    "Name": "blue_ice"
+  },
+  {
+    "Name": "blue_stained_glass"
+  },
+  {
+    "Name": "blue_stained_glass_pane"
+  },
+  {
+    "Name": "blue_terracotta"
+  },
+  {
+    "Name": "bone_meal"
+  },
+  {
+    "Name": "bone_block"
+  },
+  {
+    "Name": "bone"
+  },
+  {
+    "Name": "paper"
+  },
+  {
+    "Name": "leather"
+  },
+  {
+    "Name": "book"
+  },
+  {
+    "Name": "bookshelf"
+  },
+  {
+    "Name": "string"
+  },
+  {
+    "Name": "bow"
+  },
+  {
+    "Name": "wheat"
+  },
+  {
+    "Name": "bread"
+  },
+  {
+    "Name": "brewing_stand"
+  },
+  {
+    "Name": "brick"
+  },
+  {
+    "Name": "bricks"
+  },
+  {
+    "Name": "brick_slab"
+  },
+  {
+    "Name": "brick_stairs"
+  },
+  {
+    "Name": "brown_wool"
+  },
+  {
+    "Name": "brown_banner"
+  },
+  {
+    "Name": "brown_bed"
+  },
+  {
+    "Name": "cocoa_beans"
+  },
+  {
+    "Name": "brown_carpet"
+  },
+  {
+    "Name": "brown_concrete_powder"
+  },
+  {
+    "Name": "brown_stained_glass"
+  },
+  {
+    "Name": "brown_stained_glass_pane"
+  },
+  {
+    "Name": "brown_terracotta"
+  },
+  {
+    "Name": "bucket"
+  },
+  {
+    "Name": "milk_bucket"
+  },
+  {
+    "Name": "sugar"
+  },
+  {
+    "Name": "egg"
+  },
+  {
+    "Name": "cake"
+  },
+  {
+    "Name": "fishing_rod"
+  },
+  {
+    "Name": "carrot"
+  },
+  {
+    "Name": "carrot_on_a_stick"
+  },
+  {
+    "Name": "cauldron"
+  },
+  {
+    "Name": "chest"
+  },
+  {
+    "Name": "minecart"
+  },
+  {
+    "Name": "chest_minecart"
+  },
+  {
+    "Name": "quartz_slab"
+  },
+  {
+    "Name": "chiseled_quartz_block"
+  },
+  {
+    "Name": "red_sandstone_slab"
+  },
+  {
+    "Name": "chiseled_red_sandstone"
+  },
+  {
+    "Name": "sandstone_slab"
+  },
+  {
+    "Name": "chiseled_sandstone"
+  },
+  {
+    "Name": "stone_brick_slab"
+  },
+  {
+    "Name": "chiseled_stone_bricks"
+  },
+  {
+    "Name": "clay_ball"
+  },
+  {
+    "Name": "clay"
+  },
+  {
+    "Name": "gold_ingot"
+  },
+  {
+    "Name": "redstone"
+  },
+  {
+    "Name": "clock"
+  },
+  {
+    "Name": "coal_block"
+  },
+  {
+    "Name": "coal"
+  },
+  {
+    "Name": "dirt"
+  },
+  {
+    "Name": "coarse_dirt"
+  },
+  {
+    "Name": "cobblestone_slab"
+  },
+  {
+    "Name": "cobblestone_stairs"
+  },
+  {
+    "Name": "cobblestone_wall"
+  },
+  {
+    "Name": "quartz"
+  },
+  {
+    "Name": "stone"
+  },
+  {
+    "Name": "comparator"
+  },
+  {
+    "Name": "compass"
+  },
+  {
+    "Name": "nautilus_shell"
+  },
+  {
+    "Name": "heart_of_the_sea"
+  },
+  {
+    "Name": "conduit"
+  },
+  {
+    "Name": "cookie"
+  },
+  {
+    "Name": "crafting_table"
+  },
+  {
+    "Name": "red_sandstone"
+  },
+  {
+    "Name": "cut_red_sandstone"
+  },
+  {
+    "Name": "sandstone"
+  },
+  {
+    "Name": "cut_sandstone"
+  },
+  {
+    "Name": "cyan_wool"
+  },
+  {
+    "Name": "cyan_banner"
+  },
+  {
+    "Name": "cyan_bed"
+  },
+  {
+    "Name": "cyan_dye"
+  },
+  {
+    "Name": "cyan_carpet"
+  },
+  {
+    "Name": "cyan_concrete_powder"
+  },
+  {
+    "Name": "cactus_green"
+  },
+  {
+    "Name": "cyan_stained_glass"
+  },
+  {
+    "Name": "cyan_stained_glass_pane"
+  },
+  {
+    "Name": "cyan_terracotta"
+  },
+  {
+    "Name": "dark_oak_planks"
+  },
+  {
+    "Name": "dark_oak_boat"
+  },
+  {
+    "Name": "dark_oak_button"
+  },
+  {
+    "Name": "dark_oak_door"
+  },
+  {
+    "Name": "dark_oak_fence"
+  },
+  {
+    "Name": "dark_oak_fence_gate"
+  },
+  {
+    "Name": "dark_oak_pressure_plate"
+  },
+  {
+    "Name": "dark_oak_slab"
+  },
+  {
+    "Name": "dark_oak_stairs"
+  },
+  {
+    "Name": "dark_oak_trapdoor"
+  },
+  {
+    "Name": "dark_oak_log"
+  },
+  {
+    "Name": "dark_oak_wood"
+  },
+  {
+    "Name": "prismarine_shard"
+  },
+  {
+    "Name": "dark_prismarine"
+  },
+  {
+    "Name": "dark_prismarine_slab"
+  },
+  {
+    "Name": "dark_prismarine_stairs"
+  },
+  {
+    "Name": "wooden_slabs"
+  },
+  {
+    "Name": "daylight_detector"
+  },
+  {
+    "Name": "stone_pressure_plate"
+  },
+  {
+    "Name": "detector_rail"
+  },
+  {
+    "Name": "diamond_block"
+  },
+  {
+    "Name": "diamond"
+  },
+  {
+    "Name": "diamond_axe"
+  },
+  {
+    "Name": "diamond_boots"
+  },
+  {
+    "Name": "diamond_chestplate"
+  },
+  {
+    "Name": "diamond_helmet"
+  },
+  {
+    "Name": "diamond_hoe"
+  },
+  {
+    "Name": "diamond_leggings"
+  },
+  {
+    "Name": "diamond_pickaxe"
+  },
+  {
+    "Name": "diamond_shovel"
+  },
+  {
+    "Name": "diamond_sword"
+  },
+  {
+    "Name": "dispenser"
+  },
+  {
+    "Name": "dried_kelp_block"
+  },
+  {
+    "Name": "dried_kelp"
+  },
+  {
+    "Name": "dropper"
+  },
+  {
+    "Name": "emerald_block"
+  },
+  {
+    "Name": "emerald"
+  },
+  {
+    "Name": "enchanting_table"
+  },
+  {
+    "Name": "ender_eye"
+  },
+  {
+    "Name": "ender_chest"
+  },
+  {
+    "Name": "ender_pearl"
+  },
+  {
+    "Name": "ghast_tear"
+  },
+  {
+    "Name": "end_crystal"
+  },
+  {
+    "Name": "popped_chorus_fruit"
+  },
+  {
+    "Name": "end_rod"
+  },
+  {
+    "Name": "end_stone"
+  },
+  {
+    "Name": "end_stone_bricks"
+  },
+  {
+    "Name": "spider_eye"
+  },
+  {
+    "Name": "brown_mushroom"
+  },
+  {
+    "Name": "fermented_spider_eye"
+  },
+  {
+    "Name": "gunpowder"
+  },
+  {
+    "Name": "fire_charge"
+  },
+  {
+    "Name": "flint_and_steel"
+  },
+  {
+    "Name": "flower_pot"
+  },
+  {
+    "Name": "furnace"
+  },
+  {
+    "Name": "furnace_minecart"
+  },
+  {
+    "Name": "glass_bottle"
+  },
+  {
+    "Name": "glass_pane"
+  },
+  {
+    "Name": "gold_nugget"
+  },
+  {
+    "Name": "melon_slice"
+  },
+  {
+    "Name": "glistering_melon_slice"
+  },
+  {
+    "Name": "glowstone_dust"
+  },
+  {
+    "Name": "glowstone"
+  },
+  {
+    "Name": "apple"
+  },
+  {
+    "Name": "golden_apple"
+  },
+  {
+    "Name": "golden_axe"
+  },
+  {
+    "Name": "golden_boots"
+  },
+  {
+    "Name": "golden_carrot"
+  },
+  {
+    "Name": "golden_chestplate"
+  },
+  {
+    "Name": "golden_helmet"
+  },
+  {
+    "Name": "golden_hoe"
+  },
+  {
+    "Name": "golden_leggings"
+  },
+  {
+    "Name": "golden_pickaxe"
+  },
+  {
+    "Name": "golden_shovel"
+  },
+  {
+    "Name": "golden_sword"
+  },
+  {
+    "Name": "gold_block"
+  },
+  {
+    "Name": "granite"
+  },
+  {
+    "Name": "gray_wool"
+  },
+  {
+    "Name": "gray_banner"
+  },
+  {
+    "Name": "gray_bed"
+  },
+  {
+    "Name": "gray_dye"
+  },
+  {
+    "Name": "gray_carpet"
+  },
+  {
+    "Name": "gray_concrete_powder"
+  },
+  {
+    "Name": "gray_stained_glass"
+  },
+  {
+    "Name": "gray_stained_glass_pane"
+  },
+  {
+    "Name": "gray_terracotta"
+  },
+  {
+    "Name": "green_wool"
+  },
+  {
+    "Name": "green_banner"
+  },
+  {
+    "Name": "green_bed"
+  },
+  {
+    "Name": "green_carpet"
+  },
+  {
+    "Name": "green_concrete_powder"
+  },
+  {
+    "Name": "green_stained_glass"
+  },
+  {
+    "Name": "green_stained_glass_pane"
+  },
+  {
+    "Name": "green_terracotta"
+  },
+  {
+    "Name": "hay_block"
+  },
+  {
+    "Name": "heavy_weighted_pressure_plate"
+  },
+  {
+    "Name": "hopper"
+  },
+  {
+    "Name": "hopper_minecart"
+  },
+  {
+    "Name": "iron_axe"
+  },
+  {
+    "Name": "iron_bars"
+  },
+  {
+    "Name": "iron_boots"
+  },
+  {
+    "Name": "iron_chestplate"
+  },
+  {
+    "Name": "iron_door"
+  },
+  {
+    "Name": "iron_helmet"
+  },
+  {
+    "Name": "iron_hoe"
+  },
+  {
+    "Name": "iron_nugget"
+  },
+  {
+    "Name": "iron_leggings"
+  },
+  {
+    "Name": "iron_pickaxe"
+  },
+  {
+    "Name": "iron_shovel"
+  },
+  {
+    "Name": "iron_sword"
+  },
+  {
+    "Name": "iron_trapdoor"
+  },
+  {
+    "Name": "item_frame"
+  },
+  {
+    "Name": "carved_pumpkin"
+  },
+  {
+    "Name": "torch"
+  },
+  {
+    "Name": "jack_o_lantern"
+  },
+  {
+    "Name": "jukebox"
+  },
+  {
+    "Name": "jungle_planks"
+  },
+  {
+    "Name": "jungle_boat"
+  },
+  {
+    "Name": "jungle_button"
+  },
+  {
+    "Name": "jungle_door"
+  },
+  {
+    "Name": "jungle_fence"
+  },
+  {
+    "Name": "jungle_fence_gate"
+  },
+  {
+    "Name": "jungle_pressure_plate"
+  },
+  {
+    "Name": "jungle_slab"
+  },
+  {
+    "Name": "jungle_stairs"
+  },
+  {
+    "Name": "jungle_trapdoor"
+  },
+  {
+    "Name": "jungle_log"
+  },
+  {
+    "Name": "jungle_wood"
+  },
+  {
+    "Name": "ladder"
+  },
+  {
+    "Name": "lapis_block"
+  },
+  {
+    "Name": "slime_ball"
+  },
+  {
+    "Name": "lead"
+  },
+  {
+    "Name": "rabbit_hide"
+  },
+  {
+    "Name": "leather_boots"
+  },
+  {
+    "Name": "leather_chestplate"
+  },
+  {
+    "Name": "leather_helmet"
+  },
+  {
+    "Name": "leather_leggings"
+  },
+  {
+    "Name": "lever"
+  },
+  {
+    "Name": "light_blue_wool"
+  },
+  {
+    "Name": "light_blue_banner"
+  },
+  {
+    "Name": "light_blue_bed"
+  },
+  {
+    "Name": "light_blue_dye"
+  },
+  {
+    "Name": "light_blue_carpet"
+  },
+  {
+    "Name": "light_blue_concrete_powder"
+  },
+  {
+    "Name": "blue_orchid"
+  },
+  {
+    "Name": "light_blue_stained_glass"
+  },
+  {
+    "Name": "light_blue_stained_glass_pane"
+  },
+  {
+    "Name": "light_blue_terracotta"
+  },
+  {
+    "Name": "light_gray_wool"
+  },
+  {
+    "Name": "light_gray_banner"
+  },
+  {
+    "Name": "light_gray_bed"
+  },
+  {
+    "Name": "light_gray_dye"
+  },
+  {
+    "Name": "light_gray_carpet"
+  },
+  {
+    "Name": "light_gray_concrete_powder"
+  },
+  {
+    "Name": "azure_bluet"
+  },
+  {
+    "Name": "oxeye_daisy"
+  },
+  {
+    "Name": "white_tulip"
+  },
+  {
+    "Name": "light_gray_stained_glass"
+  },
+  {
+    "Name": "light_gray_stained_glass_pane"
+  },
+  {
+    "Name": "light_gray_terracotta"
+  },
+  {
+    "Name": "light_weighted_pressure_plate"
+  },
+  {
+    "Name": "lime_wool"
+  },
+  {
+    "Name": "lime_banner"
+  },
+  {
+    "Name": "lime_bed"
+  },
+  {
+    "Name": "lime_dye"
+  },
+  {
+    "Name": "lime_carpet"
+  },
+  {
+    "Name": "lime_concrete_powder"
+  },
+  {
+    "Name": "lime_stained_glass"
+  },
+  {
+    "Name": "lime_stained_glass_pane"
+  },
+  {
+    "Name": "lime_terracotta"
+  },
+  {
+    "Name": "magenta_wool"
+  },
+  {
+    "Name": "magenta_banner"
+  },
+  {
+    "Name": "magenta_bed"
+  },
+  {
+    "Name": "magenta_dye"
+  },
+  {
+    "Name": "magenta_carpet"
+  },
+  {
+    "Name": "magenta_concrete_powder"
+  },
+  {
+    "Name": "allium"
+  },
+  {
+    "Name": "rose_red"
+  },
+  {
+    "Name": "pink_dye"
+  },
+  {
+    "Name": "lilac"
+  },
+  {
+    "Name": "purple_dye"
+  },
+  {
+    "Name": "magenta_stained_glass"
+  },
+  {
+    "Name": "magenta_stained_glass_pane"
+  },
+  {
+    "Name": "magenta_terracotta"
+  },
+  {
+    "Name": "magma_cream"
+  },
+  {
+    "Name": "magma_block"
+  },
+  {
+    "Name": "map"
+  },
+  {
+    "Name": "melon"
+  },
+  {
+    "Name": "melon_seeds"
+  },
+  {
+    "Name": "vine"
+  },
+  {
+    "Name": "mossy_cobblestone"
+  },
+  {
+    "Name": "mossy_cobblestone_wall"
+  },
+  {
+    "Name": "stone_bricks"
+  },
+  {
+    "Name": "mossy_stone_bricks"
+  },
+  {
+    "Name": "red_mushroom"
+  },
+  {
+    "Name": "mushroom_stew"
+  },
+  {
+    "Name": "nether_brick"
+  },
+  {
+    "Name": "nether_bricks"
+  },
+  {
+    "Name": "nether_brick_fence"
+  },
+  {
+    "Name": "nether_brick_slab"
+  },
+  {
+    "Name": "nether_brick_stairs"
+  },
+  {
+    "Name": "nether_wart"
+  },
+  {
+    "Name": "nether_wart_block"
+  },
+  {
+    "Name": "note_block"
+  },
+  {
+    "Name": "oak_planks"
+  },
+  {
+    "Name": "oak_boat"
+  },
+  {
+    "Name": "oak_button"
+  },
+  {
+    "Name": "oak_door"
+  },
+  {
+    "Name": "oak_fence"
+  },
+  {
+    "Name": "oak_fence_gate"
+  },
+  {
+    "Name": "oak_pressure_plate"
+  },
+  {
+    "Name": "oak_slab"
+  },
+  {
+    "Name": "oak_stairs"
+  },
+  {
+    "Name": "oak_trapdoor"
+  },
+  {
+    "Name": "oak_log"
+  },
+  {
+    "Name": "oak_wood"
+  },
+  {
+    "Name": "observer"
+  },
+  {
+    "Name": "orange_wool"
+  },
+  {
+    "Name": "orange_banner"
+  },
+  {
+    "Name": "orange_bed"
+  },
+  {
+    "Name": "orange_dye"
+  },
+  {
+    "Name": "orange_carpet"
+  },
+  {
+    "Name": "orange_concrete_powder"
+  },
+  {
+    "Name": "orange_tulip"
+  },
+  {
+    "Name": "dandelion_yellow"
+  },
+  {
+    "Name": "orange_stained_glass"
+  },
+  {
+    "Name": "orange_stained_glass_pane"
+  },
+  {
+    "Name": "orange_terracotta"
+  },
+  {
+    "Name": "ice"
+  },
+  {
+    "Name": "wool"
+  },
+  {
+    "Name": "painting"
+  },
+  {
+    "Name": "sugar_cane"
+  },
+  {
+    "Name": "pink_wool"
+  },
+  {
+    "Name": "pink_banner"
+  },
+  {
+    "Name": "pink_bed"
+  },
+  {
+    "Name": "pink_carpet"
+  },
+  {
+    "Name": "pink_concrete_powder"
+  },
+  {
+    "Name": "peony"
+  },
+  {
+    "Name": "pink_tulip"
+  },
+  {
+    "Name": "pink_stained_glass"
+  },
+  {
+    "Name": "pink_stained_glass_pane"
+  },
+  {
+    "Name": "pink_terracotta"
+  },
+  {
+    "Name": "piston"
+  },
+  {
+    "Name": "polished_andesite"
+  },
+  {
+    "Name": "polished_diorite"
+  },
+  {
+    "Name": "polished_granite"
+  },
+  {
+    "Name": "powered_rail"
+  },
+  {
+    "Name": "prismarine"
+  },
+  {
+    "Name": "prismarine_bricks"
+  },
+  {
+    "Name": "prismarine_brick_slab"
+  },
+  {
+    "Name": "prismarine_brick_stairs"
+  },
+  {
+    "Name": "prismarine_slab"
+  },
+  {
+    "Name": "prismarine_stairs"
+  },
+  {
+    "Name": "pumpkin"
+  },
+  {
+    "Name": "pumpkin_pie"
+  },
+  {
+    "Name": "pumpkin_seeds"
+  },
+  {
+    "Name": "purple_wool"
+  },
+  {
+    "Name": "purple_banner"
+  },
+  {
+    "Name": "purple_bed"
+  },
+  {
+    "Name": "purple_carpet"
+  },
+  {
+    "Name": "purple_concrete_powder"
+  },
+  {
+    "Name": "purple_stained_glass"
+  },
+  {
+    "Name": "purple_stained_glass_pane"
+  },
+  {
+    "Name": "purple_terracotta"
+  },
+  {
+    "Name": "purpur_block"
+  },
+  {
+    "Name": "purpur_slab"
+  },
+  {
+    "Name": "purpur_pillar"
+  },
+  {
+    "Name": "purpur_stairs"
+  },
+  {
+    "Name": "quartz_block"
+  },
+  {
+    "Name": "quartz_pillar"
+  },
+  {
+    "Name": "quartz_stairs"
+  },
+  {
+    "Name": "baked_potato"
+  },
+  {
+    "Name": "cooked_rabbit"
+  },
+  {
+    "Name": "rabbit_stew"
+  },
+  {
+    "Name": "rail"
+  },
+  {
+    "Name": "redstone_block"
+  },
+  {
+    "Name": "redstone_lamp"
+  },
+  {
+    "Name": "red_wool"
+  },
+  {
+    "Name": "red_banner"
+  },
+  {
+    "Name": "red_bed"
+  },
+  {
+    "Name": "red_carpet"
+  },
+  {
+    "Name": "red_concrete_powder"
+  },
+  {
+    "Name": "poppy"
+  },
+  {
+    "Name": "rose_bush"
+  },
+  {
+    "Name": "red_tulip"
+  },
+  {
+    "Name": "red_nether_bricks"
+  },
+  {
+    "Name": "red_sand"
+  },
+  {
+    "Name": "red_sandstone_stairs"
+  },
+  {
+    "Name": "red_stained_glass"
+  },
+  {
+    "Name": "red_stained_glass_pane"
+  },
+  {
+    "Name": "red_terracotta"
+  },
+  {
+    "Name": "repeater"
+  },
+  {
+    "Name": "sandstone_stairs"
+  },
+  {
+    "Name": "prismarine_crystals"
+  },
+  {
+    "Name": "sea_lantern"
+  },
+  {
+    "Name": "shears"
+  },
+  {
+    "Name": "shield"
+  },
+  {
+    "Name": "shulker_shell"
+  },
+  {
+    "Name": "shulker_box"
+  },
+  {
+    "Name": "sign"
+  },
+  {
+    "Name": "slime_block"
+  },
+  {
+    "Name": "snow_block"
+  },
+  {
+    "Name": "snow"
+  },
+  {
+    "Name": "snowball"
+  },
+  {
+    "Name": "spectral_arrow"
+  },
+  {
+    "Name": "spruce_planks"
+  },
+  {
+    "Name": "spruce_boat"
+  },
+  {
+    "Name": "spruce_button"
+  },
+  {
+    "Name": "spruce_door"
+  },
+  {
+    "Name": "spruce_fence"
+  },
+  {
+    "Name": "spruce_fence_gate"
+  },
+  {
+    "Name": "spruce_pressure_plate"
+  },
+  {
+    "Name": "spruce_slab"
+  },
+  {
+    "Name": "spruce_stairs"
+  },
+  {
+    "Name": "spruce_trapdoor"
+  },
+  {
+    "Name": "spruce_log"
+  },
+  {
+    "Name": "spruce_wood"
+  },
+  {
+    "Name": "sticky_piston"
+  },
+  {
+    "Name": "stone_axe"
+  },
+  {
+    "Name": "stone_brick_stairs"
+  },
+  {
+    "Name": "stone_button"
+  },
+  {
+    "Name": "stone_hoe"
+  },
+  {
+    "Name": "stone_pickaxe"
+  },
+  {
+    "Name": "stone_shovel"
+  },
+  {
+    "Name": "stone_sword"
+  },
+  {
+    "Name": "tnt"
+  },
+  {
+    "Name": "tnt_minecart"
+  },
+  {
+    "Name": "tripwire_hook"
+  },
+  {
+    "Name": "trapped_chest"
+  },
+  {
+    "Name": "scute"
+  },
+  {
+    "Name": "turtle_helmet"
+  },
+  {
+    "Name": "white_banner"
+  },
+  {
+    "Name": "white_carpet"
+  },
+  {
+    "Name": "white_concrete_powder"
+  },
+  {
+    "Name": "white_stained_glass"
+  },
+  {
+    "Name": "white_stained_glass_pane"
+  },
+  {
+    "Name": "white_terracotta"
+  },
+  {
+    "Name": "wooden_axe"
+  },
+  {
+    "Name": "wooden_hoe"
+  },
+  {
+    "Name": "wooden_pickaxe"
+  },
+  {
+    "Name": "wooden_shovel"
+  },
+  {
+    "Name": "wooden_sword"
+  },
+  {
+    "Name": "writable_book"
+  },
+  {
+    "Name": "yellow_wool"
+  },
+  {
+    "Name": "yellow_banner"
+  },
+  {
+    "Name": "yellow_bed"
+  },
+  {
+    "Name": "yellow_carpet"
+  },
+  {
+    "Name": "yellow_concrete_powder"
+  },
+  {
+    "Name": "dandelion"
+  },
+  {
+    "Name": "sunflower"
+  },
+  {
+    "Name": "yellow_stained_glass"
+  },
+  {
+    "Name": "yellow_stained_glass_pane"
+  },
+  {
+    "Name": "yellow_terracotta"
+  }
+]
