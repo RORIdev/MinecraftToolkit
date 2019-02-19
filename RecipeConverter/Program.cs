@@ -19,8 +19,10 @@ namespace RecipeConverter
             List<MojangShapedModel> RegisteredMojangShaped = new List<MojangShapedModel>();
             List<MojangShapelessModel> RegisteredMojangShapeless = new List<MojangShapelessModel>();
             List<MojangItem> RegisteredItems = new List<MojangItem>();
+            List<Item> UnElementizedItems = new List<Item>();
             List<Item> FinalItemList = new List<Item>();
-            List<CraftingRecipe> CraftingList = new List<CraftingRecipe>();
+            List<CraftingRecipe> UnelementizedCraftings = new List<CraftingRecipe>();
+            List<CraftingRecipe> FinalCraftList = new List<CraftingRecipe>();
             DirectoryInfo dir = new DirectoryInfo(path);
             List<FileInfo> files = dir.GetFiles("*.json").ToList();
             List<string> exceptionFiles = new List<string>();
@@ -106,32 +108,116 @@ namespace RecipeConverter
             foreach (MojangItem i in RegisteredItems) {
                 if (i.item != null) {
                     Item push = new Item { Name = i.item.Split(':')[1] };
-                    FinalItemList.Add(push);
+                    UnElementizedItems.Add(push);
                     Console.WriteLine($"[MojangItem -> Item ] {push.Name}");
                 }
 
             }
             
             foreach (var mojangCraft in RegisteredMojangShaped) {
-                var craft = fromMojangShaped(mojangCraft, FinalItemList);
-                CraftingList.Add(craft);
+                var craft = fromMojangShaped(mojangCraft, UnElementizedItems);
+                UnelementizedCraftings.Add(craft);
                 Console.WriteLine($"Recipe for {craft.Output.Item.Name} [x {craft.Output.Quantity}] Added. @ Shaped");
             }
             
 
             foreach (var mojangCraft in RegisteredMojangShapeless) {
-                var craft = fromMojangShapeless(mojangCraft,FinalItemList);
-                CraftingList.Add(craft);
+                var craft = fromMojangShapeless(mojangCraft,UnElementizedItems);
+                UnelementizedCraftings.Add(craft);
                 Console.WriteLine($"Recipe for {craft.Output.Item.Name} [x {craft.Output.Quantity}] Added. @ Shapeless");
 
             }
-            File.WriteAllText(Directory.GetCurrentDirectory() + @"\Craft.json", JsonConvert.SerializeObject(CraftingList, Formatting.Indented));
+           
+            Console.WriteLine($"Elementirization of all the items. Could take some time.");
+
+            foreach (Item item in UnElementizedItems) {
+                var allCraft = UnelementizedCraftings.FindAll(x => x.Output.Item == item);
+                if (allCraft.Count == 0)
+                {
+                    Console.WriteLine($"Elemental Item Found >  {item.Name}");
+
+                    item.Elemental = true;
+                    if (!FinalItemList.Contains(item)) {
+                        FinalItemList.Add(item);
+                    }
+
+
+                }
+                else {
+                    foreach (var cRecipe in allCraft)
+                    {
+                        //there are craftings that origins from a orename_block [e.g. iron_block]
+                        //such item would create a loop on the recursion [ingot -> block -> ingot ...] and should be discarted.
+                        //need to get itemlist real quick.
+
+                        
+                        string polishedItemName = (item.Name.Contains("_ingot") ? $"{item.Name.Split('_')[0]}" : "");
+                        if (item.Name == "emerald" || item.Name == "diamond" || item.Name == "redstone")
+                        {
+                            polishedItemName = item.Name;
+                        }
+                        if (item.Name == "lapis_lazuli") {
+                            polishedItemName = "lapis";
+                        }
+                        if (!String.IsNullOrWhiteSpace(polishedItemName) )
+                        {
+                          
+                            item.Elemental = true;
+                            if (!FinalItemList.Contains(item))
+                            {
+                                Console.WriteLine($"Elemental Item Found >  {item.Name}");
+                                FinalItemList.Add(item);
+                            }
+                        }
+                        else {
+                            if (item.Name != null)
+
+                            {
+                                item.Elemental = false;
+                                if (!FinalItemList.Contains(item))
+                                {
+                                    FinalItemList.Add(item);
+                                }
+                            }
+
+
+                        }
+
+                    }
+                }
+
+
+            }
+
+            ///////////////////////////////////////////////////////////////////
+            ///
+
+            foreach (CraftingRecipe recipe in UnelementizedCraftings)
+            {
+                CraftingRecipe ElementizedCrafting = new CraftingRecipe();
+                ElementizedCrafting.Input = new List<ItemStack>();
+                ElementizedCrafting.Output = new ItemStack();
+                foreach (var itemstack in recipe.Input)
+                {
+                    var item = FinalItemList.Find(x => x.Name == itemstack.Item.Name);
+                    ElementizedCrafting.Input.Add(new ItemStack { Item = item, Quantity = itemstack.Quantity });
+
+                }
+                ElementizedCrafting.Output.Item = FinalItemList.Find(x => x.Name == recipe.Output.Item.Name);
+                ElementizedCrafting.Output.Quantity = recipe.Output.Quantity;
+                FinalCraftList.Add(ElementizedCrafting);
+                Console.WriteLine($"[Imouto']\t{ElementizedCrafting.Output.Item.Name} [ADDED] -> FCL");
+            }
+
+            File.WriteAllText(Directory.GetCurrentDirectory() + @"\Craft.json", JsonConvert.SerializeObject(FinalCraftList, Formatting.Indented));
             Console.WriteLine($"\n\n Done Converting {(RegisteredMojangShaped.Count + RegisteredMojangShapeless.Count)} Recipes from {files.Count} .json files.\n\n" +
                 $"|| Item Registry Results || {RegisteredItems.Count} distinct items.");
             Console.WriteLine($"\n\n  [MojangItem  <{RegisteredItems.Count}> -> Item <{FinalItemList.Count}>] Conversion Completed.");
             File.WriteAllText(Directory.GetCurrentDirectory() + @"\Items.json", JsonConvert.SerializeObject(FinalItemList, Formatting.Indented));
             Console.WriteLine($"\nWritten all Item to Item.json");
             Console.WriteLine($"\n\n  Done! Crafings added to Craft.json");
+
+
             //////////////////////////////////////////////////////////////////////////////
             CraftingRecipe fromMojangShaped(MojangShapedModel mojangCraft, List<Item> itemList)
             {
@@ -215,6 +301,7 @@ namespace RecipeConverter
                 };
                 return cr;
             }
+
             Console.ReadLine();
         }
 

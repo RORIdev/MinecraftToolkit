@@ -10,6 +10,7 @@ namespace CraftingHelper.Models
     {
 
         public String Name { get; set; }
-
+        public bool Elemental { get; set; }
     }
 }
+

@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,7 +26,19 @@ namespace CraftingHelper
         {
             InitializeComponent();
             if (!item.Exists) {
+                using (var client = new WebClient())
+                {
+                    client.DownloadFile("https://raw.githubusercontent.com/UBGEdev/MinecraftToolkit/test/CraftingHelper/Items.json", "Items.json");
+                }
 
+            }
+
+            if (!crafts.Exists)
+            {
+                using (var client = new WebClient())
+                {
+                    client.DownloadFile("https://raw.githubusercontent.com/UBGEdev/MinecraftToolkit/test/CraftingHelper/Craft.json", "Craft.json");
+                }
 
             }
             RegisteredItems = JsonConvert.DeserializeObject<List<Item>>(item.OpenText().ReadToEnd());
@@ -39,7 +52,7 @@ namespace CraftingHelper
             string semDashN = semDashR.Split('\n')[0];
             string name = semDashN.Split('x')[1];
             int quantity = int.Parse(semDashN.Split('x')[0]);
-            Item i = RegisteredItems.Find(x => x.Name.Contains(name.ToLower()));
+            Item i = RegisteredItems.Find(x => x.Name == name);
             var _is = new ItemStack { Item = i, Quantity = quantity }; ;
             FilaDeCraftings.Enqueue(_is);
             return _is;
@@ -72,43 +85,89 @@ namespace CraftingHelper
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            
-            while (FilaDeCraftings.Count > 0) {
-                var item = FilaDeCraftings.Dequeue();
-                var craft = RegisteredRecipes.Find(x => x.Output.Item.Name == item.Item.Name);
-                if (craft != null)
+
+            while (FilaDeCraftings.Count > 0)
+            {
+                var itemStack = FilaDeCraftings.Dequeue();
+                var itemOutput = itemStack.Item;
+                if (!itemOutput.Elemental)
                 {
-                    foreach (ItemStack its in craft.Input)
+                    var allRecipes = RegisteredRecipes.FindAll(x => x.Output.Item.Name == itemOutput.Name);
+                    if (allRecipes.Count == 1)
                     {
-                        if (RegisteredRecipes.Find(x => x.Output.Item == its.Item) != null)
+                        List<ItemStack> iteminput = allRecipes[0].Input;
+                        foreach (ItemStack item in iteminput)
                         {
-                            var nItem = new ItemStack { Item = its.Item, Quantity=item.Quantity};
-                            FilaDeCraftings.Enqueue(nItem);
-                        }
-                        else {
-                            if (ListaDeMateriais.Find(x => x.Item == its.Item) != null)
+                            if (item.Item.Elemental)
                             {
-                                var itemnalista = ListaDeMateriais.Find(x => x.Item == its.Item);
-                                var lquantidade = itemnalista.Quantity;
-                                var qquantidade = its.Quantity * item.Quantity;
-                                var tquantidade = lquantidade + qquantidade;
-                                var nItem = new ItemStack { Item = its.Item, Quantity = tquantidade };
-                                ListaDeMateriais.Remove(itemnalista);
-                                ListaDeMateriais.Add(nItem);
+                                if (ListaDeMateriais.Find(x => x.Item == item.Item) == null)
+                                {
+                                    ListaDeMateriais.Add(new ItemStack { Item = item.Item, Quantity = (int)Math.Round(((double)itemStack.Quantity * (double)item.Quantity)) });
+                                }
+                                else
+                                {
+                                    var oldItem = ListaDeMateriais.Find(x => x.Item == item.Item);
+                                    var fixQtd = oldItem.Quantity + (int)Math.Round((double)itemStack.Quantity * (double)item.Quantity);
+                                    ItemStack novoItem = new ItemStack { Item = oldItem.Item, Quantity = fixQtd };
+                                    ListaDeMateriais.Remove(ListaDeMateriais.Find(x => x.Item == item.Item));
+                                    ListaDeMateriais.Add(novoItem);
+                                }
+
                             }
                             else
                             {
-                                var qquantidade = its.Quantity * item.Quantity;
-                                var nItem = new ItemStack { Item = its.Item, Quantity = qquantidade };
-                                ListaDeMateriais.Add(nItem);
+                                var fixQtd = item.Quantity + (int)Math.Round((double)itemStack.Quantity * (double)item.Quantity);
+                                FilaDeCraftings.Enqueue(new ItemStack { Item = item.Item, Quantity = fixQtd });
                             }
+                        }
+                    }
+                    else
+                    {
+                        int Minimum = allRecipes.Min(x => x.Input.Count);
+                        var LowestValue = allRecipes.FindAll(x => x.Input.Count == Minimum);
 
+                        List<ItemStack> iteminput = LowestValue[0].Input;
+                        foreach (ItemStack item in iteminput)
+                        {
+                            if (item.Item.Elemental)
+                            {
+                                if (ListaDeMateriais.Find(x => x.Item == item.Item) == null)
+                                {
+                                    ListaDeMateriais.Add(new ItemStack { Item = item.Item, Quantity = (int)Math.Round((double)itemStack.Quantity * (double)item.Quantity) });
+                                }
+                                else
+                                {
+                                    var oldItem = ListaDeMateriais.Find(x => x.Item == item.Item);
+                                    var fixQtd = oldItem.Quantity + (int)Math.Round((double)itemStack.Quantity * (double)item.Quantity);
+                                    ItemStack novoItem = new ItemStack { Item = oldItem.Item, Quantity = fixQtd };
+                                    ListaDeMateriais.Remove(ListaDeMateriais.Find(x => x.Item == item.Item));
+                                    ListaDeMateriais.Add(novoItem);
+                                }
+
+                            }
+                            else
+                            {
+                                var fixQtd = item.Quantity + (int)Math.Round((double)itemStack.Quantity * (double)item.Quantity);
+                                FilaDeCraftings.Enqueue(new ItemStack { Item = item.Item, Quantity = fixQtd });
+                            }
                         }
 
                     }
                 }
-                else {
-                    ListaDeMateriais.Add(item);
+                else
+                {
+                    if (ListaDeMateriais.Find(x => x.Item == itemOutput) == null)
+                    {
+                        ListaDeMateriais.Add(itemStack);
+                    }
+                    else
+                    {
+                        var oldItem = ListaDeMateriais.Find(x => x.Item == itemOutput);
+                        var fixQtd = oldItem.Quantity + (int)Math.Round((double)itemStack.Quantity);
+                        ItemStack novoItem = new ItemStack { Item = oldItem.Item, Quantity = fixQtd };
+                        ListaDeMateriais.Remove(ListaDeMateriais.Find(x => x.Item == itemOutput));
+                        ListaDeMateriais.Add(novoItem);
+                    }
                 }
 
             }
