@@ -149,37 +149,161 @@ namespace RecipeConverter
                         //there are craftings that origins from a orename_block [e.g. iron_block]
                         //such item would create a loop on the recursion [ingot -> block -> ingot ...] and should be discarted.
                         //need to get itemlist real quick.
-
-                        
-                        string polishedItemName = (item.Name.Contains("_ingot") ? $"{item.Name.Split('_')[0]}" : "");
-                        if (item.Name == "emerald" || item.Name == "diamond" || item.Name == "redstone")
-                        {
-                            polishedItemName = item.Name;
-                        }
-                        if (item.Name == "lapis_lazuli") {
-                            polishedItemName = "lapis";
-                        }
-                        if (!String.IsNullOrWhiteSpace(polishedItemName) )
-                        {
-                          
-                            item.Elemental = true;
-                            if (!FinalItemList.Contains(item))
+                        //god fucking sake. recursion wont help because of the loop.
+                        //this is as best as i can get it. the problem is that, as an mc player i could easely hardcode every single elemental item.
+                        //but mojang.
+                        if (item.Name != null) {
+                            if (item.Name.Contains("_ingot"))
                             {
-                                Console.WriteLine($"Elemental Item Found >  {item.Name}");
-                                FinalItemList.Add(item);
-                            }
-                        }
-                        else {
-                            if (item.Name != null)
-
-                            {
-                                item.Elemental = false;
-                                if (!FinalItemList.Contains(item))
+                                string polishedItemName = $"{item.Name.Split('_')[0]}";
+                                if (item.Name == "emerald" || item.Name == "diamond" || item.Name == "redstone")
                                 {
-                                    FinalItemList.Add(item);
+                                    polishedItemName = item.Name;
+                                }
+                                if (item.Name == "lapis_lazuli")
+                                {
+                                    polishedItemName = "lapis";
+                                }
+
+                                if (!String.IsNullOrWhiteSpace(polishedItemName))
+                                {
+
+                                    item.Elemental = true;
+                                    if (!FinalItemList.Contains(item))
+                                    {
+                                        Console.WriteLine($"Elemental Item Found >  {item.Name}");
+                                        FinalItemList.Add(item);
+                                    }
+                                }
+                                else
+                                {
+                                    if (item.Name != null)
+
+                                    {
+                                        item.Elemental = false;
+                                        if (!FinalItemList.Contains(item))
+                                        {
+                                            FinalItemList.Add(item);
+                                        }
+                                    }
+
+
+                                }
+
+                            }
+                            else if (item.Name.Contains("_block"))
+                            {
+
+                                //take an example as hay_block.
+                                //9x wheat -> 1x hay_block
+                                List<string> allItemNames = item.Name.Split('_').ToList();
+                                allItemNames.Remove(allItemNames.Last());
+
+
+                                bool craftable = false;
+                                foreach (var craft in allCraft)
+                                {
+                                    foreach (ItemStack i in craft.Input)
+                                    {
+                                        if (allCraft.FindAll(x => x.Output.Item.Name == i.Item.Name).Count != 0)
+                                        { //inner crafting search.
+                                            var innerCraft = allCraft.FindAll(x => x.Output.Item.Name == i.Item.Name);
+                                            foreach (var inner in innerCraft)
+                                            {
+                                                if (inner.Input.Any(x => x.Item.Elemental == true))
+                                                {
+                                                    craftable = true;
+                                                    break;
+                                                }
+                                            }
+
+                                        }
+                                    }
+                                    if (craft.Input.Any(x => x.Item.Elemental == true))
+                                    {
+                                        craftable = true;
+                                        break;
+                                    }
+
+                                }
+
+                                if (craftable)
+                                {
+                                    var nItem = new Item();
+                                    nItem.Elemental = false;
+                                    nItem.Name = item.Name;
+                                    if (!FinalItemList.Contains(nItem) && item.Name != null)
+                                    {
+                                        FinalItemList.Add(nItem);
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    var nItem = new Item();
+                                    nItem.Elemental = true;
+                                    nItem.Name = item.Name;
+                                    if (!FinalItemList.Contains(nItem) && item.Name != null)
+                                    {
+                                        Console.WriteLine($"Elemental Item Found >  {item.Name}");
+                                        FinalItemList.Add(nItem);
+                                    }
+                                }
+
+                            }
+                            else {
+                                bool craftable = false;
+                                foreach (var craft in allCraft)
+                                {
+                                    foreach (ItemStack i in craft.Input)
+                                    {
+                                        if (allCraft.FindAll(x => x.Output.Item.Name == i.Item.Name).Count != 0)
+                                        { //inner crafting search.
+                                            var innerCraft = allCraft.FindAll(x => x.Output.Item.Name == i.Item.Name);
+                                            foreach (var inner in innerCraft)
+                                            {
+                                                if (inner.Input.Any(x => x.Item.Elemental == true))
+                                                {
+                                                    craftable = true;
+                                                    break;
+                                                }
+                                            }
+
+                                        }
+                                    }
+                                    if (craft.Input.Any(x => x.Item.Elemental == true))
+                                    {
+                                        craftable = true;
+                                        break;
+                                    }
+
+                                }
+
+                                if (craftable)
+                                {
+                                    var nItem = new Item();
+                                    nItem.Elemental = false;
+                                    nItem.Name = item.Name;
+                                    if (!FinalItemList.Contains(nItem) && item.Name != null)
+                                    {
+                                        FinalItemList.Add(nItem);
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    var nItem = new Item();
+                                    nItem.Elemental = true;
+                                    nItem.Name = item.Name;
+                                    if (!FinalItemList.Contains(nItem) && item.Name != null)
+                                    {
+                                        Console.WriteLine($"Elemental Item Found >  {item.Name}");
+                                        FinalItemList.Add(nItem);
+                                    }
                                 }
                             }
-
 
                         }
 

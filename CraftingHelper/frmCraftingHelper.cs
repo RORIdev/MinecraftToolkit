@@ -25,22 +25,6 @@ namespace CraftingHelper
         public frmCraftingHelper()
         {
             InitializeComponent();
-            if (!item.Exists) {
-                using (var client = new WebClient())
-                {
-                    client.DownloadFile("https://raw.githubusercontent.com/UBGEdev/MinecraftToolkit/test/CraftingHelper/Items.json", "Items.json");
-                }
-
-            }
-
-            if (!crafts.Exists)
-            {
-                using (var client = new WebClient())
-                {
-                    client.DownloadFile("https://raw.githubusercontent.com/UBGEdev/MinecraftToolkit/test/CraftingHelper/Craft.json", "Craft.json");
-                }
-
-            }
             RegisteredItems = JsonConvert.DeserializeObject<List<Item>>(item.OpenText().ReadToEnd());
             RegisteredRecipes = JsonConvert.DeserializeObject<List<CraftingRecipe>>(crafts.OpenText().ReadToEnd());
         }
@@ -195,6 +179,16 @@ namespace CraftingHelper
             RegisteredRecipes.ForEach(x => { allrecipe += $" {x.Output.Item.Name}\r\n"; });
             tbOutput.Text = allrecipe;
             
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

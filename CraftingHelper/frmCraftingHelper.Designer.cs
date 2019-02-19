@@ -46,9 +46,10 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 13);
+            this.label1.Size = new System.Drawing.Size(263, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Digite os items [Ex : 90xCobble]";
+            this.label1.Text = "Type here the items [E.G. 100xpiston] and press enter.";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tbItems
             // 
@@ -57,14 +58,14 @@
             this.tbItems.Multiline = true;
             this.tbItems.Name = "tbItems";
             this.tbItems.Size = new System.Drawing.Size(241, 301);
-            this.tbItems.TabIndex = 2;
+            this.tbItems.TabIndex = 4;
             // 
             // tbInput
             // 
             this.tbInput.Location = new System.Drawing.Point(15, 28);
             this.tbInput.Name = "tbInput";
             this.tbInput.Size = new System.Drawing.Size(241, 26);
-            this.tbInput.TabIndex = 3;
+            this.tbInput.TabIndex = 0;
             this.tbInput.Text = "";
             this.tbInput.Click += new System.EventHandler(this.tbInput_Click);
             this.tbInput.TextChanged += new System.EventHandler(this.tbInput_TextChanged);
@@ -74,8 +75,8 @@
             this.btnCalcular.Location = new System.Drawing.Point(96, 395);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(160, 23);
-            this.btnCalcular.TabIndex = 4;
-            this.btnCalcular.Text = "Calcular !";
+            this.btnCalcular.TabIndex = 1;
+            this.btnCalcular.Text = "Calculate";
             this.btnCalcular.UseVisualStyleBackColor = true;
             this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
@@ -84,7 +85,7 @@
             this.tbOutput.Location = new System.Drawing.Point(371, 75);
             this.tbOutput.Name = "tbOutput";
             this.tbOutput.Size = new System.Drawing.Size(251, 301);
-            this.tbOutput.TabIndex = 5;
+            this.tbOutput.TabIndex = 2;
             this.tbOutput.Text = "";
             // 
             // label2
@@ -101,7 +102,7 @@
             this.btnClear.Location = new System.Drawing.Point(15, 395);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 7;
+            this.btnClear.TabIndex = 3;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -119,14 +120,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(254, 379);
+            this.label3.Location = new System.Drawing.Point(368, 379);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(368, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "You can add your own recipe.json if they dont accept different items per key.";
+            this.label3.Size = new System.Drawing.Size(166, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Will Add this thing in the soon :tm:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(447, 395);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(163, 23);
