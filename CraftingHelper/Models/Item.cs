@@ -11,6 +11,7 @@ namespace CraftingHelper.Models
 
         public String Name { get; set; }
         public bool Elemental { get; set; }
+        public bool Updated { get; set; }
     }
 }
 

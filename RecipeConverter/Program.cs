@@ -134,7 +134,7 @@ namespace RecipeConverter
                 var allCraft = UnelementizedCraftings.FindAll(x => x.Output.Item == item);
                 if (allCraft.Count == 0)
                 {
-                    Console.WriteLine($"Elemental Item Found >  {item.Name}");
+                    
 
                     item.Elemental = true;
                     if (!FinalItemList.Contains(item)) {
@@ -171,7 +171,7 @@ namespace RecipeConverter
                                     item.Elemental = true;
                                     if (!FinalItemList.Contains(item))
                                     {
-                                        Console.WriteLine($"Elemental Item Found >  {item.Name}");
+                                        
                                         FinalItemList.Add(item);
                                     }
                                 }
@@ -193,6 +193,7 @@ namespace RecipeConverter
                             }
                             else if (item.Name.Contains("_block"))
                             {
+                                
 
                                 //take an example as hay_block.
                                 //9x wheat -> 1x hay_block
@@ -246,11 +247,11 @@ namespace RecipeConverter
                                     nItem.Name = item.Name;
                                     if (!FinalItemList.Contains(nItem) && item.Name != null)
                                     {
-                                        Console.WriteLine($"Elemental Item Found >  {item.Name}");
+                                       
                                         FinalItemList.Add(nItem);
                                     }
                                 }
-
+                                
                             }
                             else {
                                 bool craftable = false;
@@ -299,7 +300,7 @@ namespace RecipeConverter
                                     nItem.Name = item.Name;
                                     if (!FinalItemList.Contains(nItem) && item.Name != null)
                                     {
-                                        Console.WriteLine($"Elemental Item Found >  {item.Name}");
+                                       
                                         FinalItemList.Add(nItem);
                                     }
                                 }
@@ -311,6 +312,213 @@ namespace RecipeConverter
                 }
 
 
+            }
+
+            ///////////////////////////////////////////////////////////////////
+            ////fakeElemental Detection
+            ///////////////////////////////////////////////////////////////////
+            //Common Vars > FinalItemList = All items added. , checkedItems = items passed throught this filter.
+            
+            List<Item> checkedItems = new List<Item>(); //I'll have to walk trought [slime_ball]
+            string MasterNameFromFullName(List<string> fullName)
+            {
+                string innerMasterName = "";
+                List<string> innerName = fullName;
+                innerName.Remove(innerName.Last());
+                innerName.ForEach(x => innerMasterName += $"{x}_");
+                innerMasterName = innerMasterName.Remove(innerMasterName.Count() - 1);
+                return innerMasterName;
+            }
+            foreach (Item itemToBeChecked in FinalItemList.Distinct())
+            {
+                Item savedItem = new Item();
+                int QuantityOfCrafts = UnelementizedCraftings.FindAll(x => x.Output.Item.Name == itemToBeChecked.Name).Count;
+                if (QuantityOfCrafts == 1)
+                {
+                    List<CraftingRecipe> craftingRecipes = UnelementizedCraftings.FindAll(x => x.Output.Item.Name == itemToBeChecked.Name);
+                    //non-explicit outer IbI checking.
+                    foreach (CraftingRecipe innerCraftings in craftingRecipes)
+                    {
+                        foreach (ItemStack innerItem in innerCraftings.Input)
+                        {
+                            List<CraftingRecipe> innerCraft = UnelementizedCraftings.FindAll(x => x.Output.Item.Name == innerItem.Item.Name);
+                            
+                            
+                            foreach (CraftingRecipe recipe in innerCraft)
+                            {
+                                if (itemToBeChecked.Name.Contains("_block"))
+                                {
+                                    string innerMasterName = MasterNameFromFullName(itemToBeChecked.Name.Split('_').ToList());
+                                    if (recipe.Input.All(x => x.Item.Name == itemToBeChecked.Name))
+                                    {
+
+                                        //thats an item_IBI 90%
+                                        Console.WriteLine($"\n ====[Depkg Data]====\n\n" +
+                                            $"itemToBeChecked = {itemToBeChecked.Name}\n" +
+                                            $"recipe.Output.Item.Name = {recipe.Output.Item.Name}\n" +
+                                            $"checkedItems.Exists(i) = {checkedItems.Exists(x => x.Name == itemToBeChecked.Name)}\n" +
+                                            $"checkedItems.Exists(r) = {checkedItems.Exists(x => x.Name == recipe.Output.Item.Name)}\n" +
+                                            $"====[END OF Depkg]====\n\n");
+                                        savedItem.Name = innerItem.Item.Name;
+                                        savedItem.Elemental = true;
+                                        savedItem.Updated = false;
+                                        
+                                        if (!checkedItems.Exists(x => x.Name == innerItem.Item.Name))
+                                        {
+                                            Console.WriteLine($"[Elemental] Item \t|{savedItem.Name}| \tpassed on elemental checking <[Inner]item_IBI>");
+                                            checkedItems.Add(savedItem);
+                                        }
+                                        else
+                                        {
+                                            savedItem.Name = innerItem.Item.Name;
+                                            savedItem.Updated = true;
+                                            checkedItems.Remove(checkedItems.Find(x => x.Name == innerItem.Item.Name));
+                                            Console.WriteLine($"[Elemental-Update] Item \t|{savedItem.Name}| \tpassed on elemental checking <[Inner]item_IBI> [Updated]");
+                                            checkedItems.Add(savedItem);
+
+                                        }
+                                                                               
+
+                                        
+                                    }
+                                    else if (recipe.Output.Item.Name.Contains("_slab"))
+                                    {
+                                        savedItem.Name = innerItem.Item.Name;
+                                        savedItem.Elemental = false;
+                                        if (checkedItems.Find(x => x.Name == savedItem.Name) == null)
+                                        {
+                                            checkedItems.Add(savedItem);
+                                        }
+                                    }
+                                }
+                               
+                            }
+                            
+                        }
+
+                    }
+                    //TODO : filter for 1 craft only. [E.g. Acacia Door, Armor, building blocks.]
+                    savedItem.Elemental = false;
+                    savedItem.Name = itemToBeChecked.Name;
+                    if (checkedItems.Find(x => x.Name == savedItem.Name) == null)
+                    {
+                        checkedItems.Add(savedItem);
+                    }
+                }
+                else if (QuantityOfCrafts == 2)
+                {
+                    //TODO : here ibi loops may happen. [E.g. iron_ingot -> iron_block / slime_ball -> slime_block ]
+
+                        List<CraftingRecipe> craftingRecipes = UnelementizedCraftings.FindAll(x => x.Output.Item.Name == itemToBeChecked.Name);
+                        List<string> separatedItemNames = itemToBeChecked.Name.Split('_').ToList();
+                        
+                        string masterName = (separatedItemNames.Count > 1 ? MasterNameFromFullName(separatedItemNames) : separatedItemNames[0]);
+                    //TODO : CHECK FOR IBI LOOP
+                    if (craftingRecipes.Any(y => y.Input.All(x => x.Item.Name.Contains(masterName))) && itemToBeChecked.Name.Contains("_block")) // expects 9xiron_ingot -> iron_block [E.g.]
+                    {
+                        //thats an iBi inner item.
+                        savedItem.Name = itemToBeChecked.Name;
+                        savedItem.Elemental = false;
+                        if (checkedItems.Find(x => x.Name == savedItem.Name) == null)
+                        {
+                            checkedItems.Add(savedItem);
+                        }
+                    }
+                    else if (craftingRecipes.Any(y => y.Input.All(x => x.Item.Name.Contains(masterName + "_block"))))
+                    {
+                        //this is an outer IbI item (gems/ores)
+                        savedItem.Name = itemToBeChecked.Name;
+                        savedItem.Elemental = true;
+                        if (checkedItems.Find(x => x.Name == savedItem.Name) == null)
+                        {
+                            Console.WriteLine($"[Elemental] Item \t|{itemToBeChecked.Name}| \tpassed on elemental checking <item_IBI>");
+                            checkedItems.Add(savedItem);
+                        }
+                    }
+                    else
+                    {
+                        savedItem.Elemental = false;
+                        savedItem.Name = itemToBeChecked.Name;
+                        if (checkedItems.Find(x => x.Name == savedItem.Name) == null)
+                        {
+                            checkedItems.Add(savedItem);
+                        }
+                    }
+                   
+
+                    
+                }
+                else if (QuantityOfCrafts == 0)
+                {
+                    
+                    savedItem.Elemental = true;
+                    savedItem.Name = itemToBeChecked.Name;
+                    if (checkedItems.Find(x => x.Name == savedItem.Name) == null)
+                    {
+                        Console.WriteLine($"[Elemental] Item \t|{itemToBeChecked.Name}|\t \tpassed on elemental checking <0craft>");
+                        checkedItems.Add(savedItem);
+                    }
+
+                }
+                else
+                {
+                    
+                    savedItem.Elemental = false;
+                    savedItem.Name = itemToBeChecked.Name;
+                    if (checkedItems.Find(x => x.Name == savedItem.Name) == null)
+                    {
+                        Console.WriteLine($"[RARE <{QuantityOfCrafts}x>] Craftings found for Item {itemToBeChecked.Name} setting to non-elemental");
+                        checkedItems.Add(savedItem);
+                    }
+                }
+            }
+
+
+            if (checkedItems.Count == FinalItemList.Count)
+            {
+                Console.WriteLine($"Item Fix is done. [FIL <- CI] ");
+                FinalItemList = checkedItems;
+            }
+            else {
+                Console.WriteLine($"FIL -> {FinalItemList.Count} != CI -> {checkedItems.Count}");
+                Console.WriteLine($"Discrepancies Written in diff.json\nCI Written in CI.json");
+                var discrepant = FinalItemList;
+                foreach (Item item in checkedItems)
+                {
+                    var Ritem = discrepant.Find(x => x.Name == item.Name);
+                    if (Ritem != null)
+                    {
+                        discrepant.Remove(Ritem);
+
+                    }
+                }
+                File.WriteAllText(Directory.GetCurrentDirectory() + @"\diff.json", JsonConvert.SerializeObject(discrepant, Formatting.Indented));
+                File.WriteAllText(Directory.GetCurrentDirectory() + @"\ci.json", JsonConvert.SerializeObject(checkedItems, Formatting.Indented));
+
+                Console.WriteLine($"Do you want to merge ? [DISC => CI] ");
+                var input = Console.ReadKey();
+                Console.WriteLine("\n");
+                if (input.KeyChar == 'y')
+                {
+                    
+                    foreach (Item uniqueItem in discrepant)
+                    {
+                        if (!checkedItems.Exists(x => x.Name == uniqueItem.Name))
+                        {
+                            Console.WriteLine($"[MERGE] Treated discrepancy {uniqueItem.Name} [E : {uniqueItem.Elemental} | U: {uniqueItem.Updated}] as checkedItem and Merged. \n");
+                            checkedItems.Add(uniqueItem);
+                        }
+
+                    }
+
+                }
+                Console.WriteLine($"Do you want to try experimental method ? [FIL = CI] ");
+                var inputb = Console.ReadKey();
+                Console.WriteLine("\n");
+                if(inputb.KeyChar == 'y')
+                {
+                    FinalItemList = checkedItems.Distinct().ToList();
+                }
             }
 
             ///////////////////////////////////////////////////////////////////
